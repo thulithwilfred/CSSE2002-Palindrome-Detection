@@ -20,15 +20,34 @@ public class Main {
                     continue;
                 }
 
-                if(isPal2(stringToTest)) {
+                if(isPal3(stringToTest)) {
                     System.out.println(stringToTest + " is Palindrome");
                 }else {
-                    System.out.println(stringToTest + "is not Palindrome");
+                    System.out.println(stringToTest + " is not Palindrome");
                 }
 
             } else {
                 printUsage();
             }
+        }
+    }
+
+    /* Palindrome Testing Using Only Recursion */
+    public static boolean isPal3(String word) {
+        int wordLen = word.length();
+        char [] testWord = word.toCharArray();
+
+
+        if(wordLen == 0 || wordLen == 1) {
+            return true;
+        }
+
+        if (testWord[wordLen - 1] ==  testWord[0]) {
+            char [] wordClipped = Arrays.copyOfRange(testWord, 1, wordLen-1);
+            String rec = new String(wordClipped);
+            return isPal3(rec);
+        } else {
+            return  false;
         }
     }
 
@@ -47,7 +66,6 @@ public class Main {
 
         return word.equals(wordReversed);
     }
-
 
     /* Use a for loop, for checking */
     public static boolean isPal1(String word) {
